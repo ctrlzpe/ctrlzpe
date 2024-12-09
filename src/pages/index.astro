@@ -19,9 +19,24 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
 
-  <Hero
+  <!-- Video Widget: Video de YouTube centrado y responsivo -->
+  <div class="flex justify-center w-full max-w-4xl mx-auto px-4 my-8">
+    <div class="relative w-full aspect-video">
+      <iframe 
+        class="absolute top-0 left-0 w-full h-full"
+        src="https://www.youtube.com/embed/0BjlBnfHcHM?si=YR9Pd8Yu3IhfAByv" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- Hero Widget: Sección principal de bienvenida con llamadas a la acción -->
+<!--   <Hero
     actions={[
       {
         variant: 'primary',
@@ -48,15 +63,13 @@ const metadata = {
       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
       Blogs.
     </Fragment>
-  </Hero>
+  </Hero> -->
 
-  <!-- Note Widget ******************* -->
-
+  <!-- Note Widget: Sección para mostrar notas o avisos importantes -->
   <Note />
 
-  <!-- Features Widget *************** -->
-
-  <Features
+  <!-- Features Widget: Muestra las características principales del producto en una cuadrícula -->
+  <!-- <Features
     id="features"
     tagline="Features"
     title="What you get with AstroWind"
@@ -99,11 +112,10 @@ const metadata = {
         icon: 'tabler:bulb',
       },
     ]}
-  />
+  /> -->
 
-  <!-- Content Widget **************** -->
-
-  <Content
+  <!-- Content Widget: Primera sección de contenido detallado sobre las bases modernas -->
+ <!--  <Content
     isReversed
     tagline="Inside template"
     title="AstroWind's Blueprint: Fun Meets Functionality!"
@@ -137,11 +149,10 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
-  <!-- Content Widget **************** -->
-
-  <Content
+  <!-- Content Widget: Segunda sección sobre personalización y presencia online -->
+<!--   <Content
     isAfterContent
     items={[
       {
@@ -175,10 +186,9 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
+ -->
+  <!-- Content Widget: Tercera sección enfocada en beneficios y soporte comunitario -->
+<!--   <Content
     isReversed
     isAfterContent
     items={[
@@ -213,10 +223,9 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
+ -->
+  <!-- Steps Widget: Guía paso a paso para comenzar con AstroWind -->
+ <!--  <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
       {
@@ -247,11 +256,10 @@ const metadata = {
       alt: 'Steps image',
     }}
   />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
+ -->
+  <!-- Features2 Widget: Showcase de componentes más utilizados -->
+  <!-- <Features2
+  title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
     tagline="Components"
     items={[
@@ -310,21 +318,17 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features2>
+  </Features2> -->
 
-  <!-- HighlightedPosts Widget ******* -->
-
+  <!-- BlogLatestPosts Widget: Muestra las últimas entradas del blog -->
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
+    title="Drops"
+    information={`
                 `}
   />
 
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
+  <!-- FAQs Widget: Sección de preguntas frecuentes -->
+<!--   <FAQs
     title="Frequently Asked Questions"
     subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
     tagline="FAQs"
@@ -361,22 +365,20 @@ const metadata = {
           "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
       },
     ]}
-  />
+  /> -->
 
-  <!-- Stats Widget ****************** -->
-
-  <Stats
+  <!-- Stats Widget: Métricas y estadísticas importantes -->
+<!--   <Stats
     stats={[
       { title: 'Downloads', amount: '132K' },
       { title: 'Stars', amount: '24.8K' },
       { title: 'Forks', amount: '10.3K' },
       { title: 'Users', amount: '48.4K' },
     ]}
-  />
+  /> -->
 
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
+  <!-- CallToAction Widget: Sección final de conversión con botón de descarga -->
+<!--   <CallToAction
     actions={[
       {
         variant: 'primary',
@@ -386,14 +388,14 @@ const metadata = {
         icon: 'tabler:download',
       },
     ]}
-  >
+  > -->
     <Fragment slot="title">
       Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
     </Fragment>
 
-    <Fragment slot="subtitle">
+<!--     <Fragment slot="subtitle">
       Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
       waste more time! :P
-    </Fragment>
+    </Fragment> -->
   </CallToAction>
 </Layout>

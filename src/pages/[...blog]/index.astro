@@ -1,31 +1,36 @@
 ---
+// Importaciones necesarias
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
-
 import merge from 'lodash.merge';
 import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
-
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
+// Habilita la pre-renderización estática
 export const prerender = true;
 
+// Genera las rutas estáticas para cada post del blog
 export const getStaticPaths = (async () => {
   return await getStaticPathsBlogPost();
 }) satisfies GetStaticPaths;
 
+// Define el tipo Props basado en el retorno de getStaticPaths
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+// Obtiene los datos del post desde las props
 const { post } = Astro.props as Props;
 
+// Genera la URL canónica y obtiene la imagen del post
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
 
+// Configura los metadatos del post combinando la información base con los metadatos personalizados
 const metadata = merge(
   {
     title: post.title,
@@ -45,10 +50,16 @@ const metadata = merge(
 ) as MetaData;
 ---
 
+<!-- Estructura del template -->
+<!-- Layout principal que envuelve todo el contenido -->
 <Layout metadata={metadata}>
+  <!-- Componente que muestra el post individual -->
   <SinglePost post={{ ...post, image: image }} url={url}>
+    <!-- Renderiza el contenido del post, ya sea como componente o como HTML -->
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
+  <!-- Enlace para volver al blog -->
   <ToBlogLink />
+  <!-- Muestra posts relacionados -->
   <RelatedPosts post={post} />
 </Layout>

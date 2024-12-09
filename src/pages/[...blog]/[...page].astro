@@ -1,32 +1,39 @@
 ---
+// Importaciones necesarias para la funcionalidad de la página
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
-
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
-// import PostTags from "~/components/blog/Tags.astro";
+// import PostTags from "~/components/blog/Tags.astro";  // Componente de tags comentado
 
+// Importación de utilidades para el blog
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 
+// Habilita la pre-renderización estática
 export const prerender = true;
 
+// Genera las rutas estáticas para la lista de posts con paginación
 export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogList({ paginate });
 }) satisfies GetStaticPaths;
 
+// Define el tipo Props basado en el retorno de getStaticPaths
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+// Obtiene los datos de la página actual desde las props
 const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 
+// Código comentado para categorías y tags
 // const allCategories = await findCategories();
 // const allTags = await findTags();
 
+// Configura los metadatos de la página
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: blogListRobots?.index && currentPage === 1,
+    index: blogListRobots?.index && currentPage === 1, // Solo indexa la primera página
     follow: blogListRobots?.follow,
   },
   openGraph: {
@@ -35,15 +42,20 @@ const metadata = {
 };
 ---
 
+<!-- Estructura del template -->
 <Layout metadata={metadata}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <!-- Encabezado del blog con título y subtítulo -->
     <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
+      
     >
-      The Blog
+      Drops | Podcast | Recursos
     </Headline>
+    <!-- Lista de posts del blog -->
     <BlogList posts={page.data} />
+    <!-- Navegación entre páginas -->
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    <!-- Componentes de tags comentados -->
     <!--
       <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
       <PostTags tags={allTags}  title="Search by Tags:" />

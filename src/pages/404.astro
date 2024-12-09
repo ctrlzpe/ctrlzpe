@@ -9,15 +9,19 @@ const title = `Error 404`;
   <section class="flex items-center h-full p-16">
     <div class="container flex flex-col items-center justify-center px-5 mx-auto my-8">
       <div class="max-w-md text-center">
+
         <h2 class="mb-8 font-bold text-9xl">
           <span class="sr-only">Error</span>
-          <span class="text-primary">404</span>
+          <div class="flex items-center justify-center">
+            <img src="/src/assets/favicons/404.png" alt="Error 404" class="error-image dark:hidden" />
+            <img src="/src/assets/favicons/404-dark.png" alt="Error 404 Dark" class="error-image hidden dark:block" />
+          </div>
         </h2>
-        <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
+        <p class="text-3xl font-semibold md:text-3xl">Todos tenemos nuestros momentos 404.</p>
         <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
-          But dont worry, you can find plenty of other things on our homepage.
+          Pero no te preocupes, aquí siempre hay un:
         </p>
-        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Ctrl + Z</a>
       </div>
     </div>
   </section>
